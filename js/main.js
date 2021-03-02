@@ -157,7 +157,7 @@
             plugins: ['mobilefriendly'],
             lang: 'de-DE',
             inlineMode: true,
-            lockDaysInclusivity: '()',
+            lockDaysInclusivity: '[]',
             lockDays: disabledDays,
             minDate: new Date(),
             highlightedDays: disabledDays,
