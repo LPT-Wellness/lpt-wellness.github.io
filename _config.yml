@@ -6,6 +6,7 @@ title: Wellness in Paderborn
 description: |
   Sauna im privaten Umfeld dort genießen wo du willst
 owner: LPT-Wellness GbR # or company name
+address: Thüringer Weg 22, 33098 Paderborn
 first_published: 2021 # if migrating another site, the year of your first publish
 email: info@wellness-pb.de
 baseurl: "" # the subpath of your site, e.g. /blog

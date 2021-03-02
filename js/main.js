@@ -107,8 +107,8 @@
 
 })(jQuery);
 
-/*
-(function () {
+
+(async function () {
     const APP_ID = 'AF67BAEC-AC5F-A102-FF4A-5DADCF67B600';
     const API_KEY = 'DFE382CE-364F-4109-BBBC-F1635E1E5754';
 
@@ -118,64 +118,100 @@
     const reservationsTable = Backendless.Data.of('reservations');
     const customersTable = Backendless.Data.of('customers');
 
-    const $createObjStatusMsg = document.getElementById('create-obj-status');
-    const $modifierPanel = document.getElementById('modifier-panel');
-    const $currentValue = document.getElementById('current-value');
-    const $input = document.getElementById('input');
-    const $updateBtn = document.getElementById('update-btn');
-
-    async function createObject() {
+    async function createObject(startDate, endDate, email, name, phone, address) {
         const reservation = await reservationsTable.save({
-            start_date: new Date(),
-            end_date: new Date(),
+            start_date: startDate,
+            end_date: endDate,
         });
 
         const customer = await customersTable.save({
-            email: 'phs@y62.de',
-            name: 'Philipp',
-            phone: '+4900000',
-            address: 'Paderborn ....'
+            email,
+            name,
+            phone,
+            address
         });
 
-        reservationsTable.setRelation(reservation, "customer", [customer]);
+        reservationsTable.setRelation(reservation, 'customer', [customer]);
+        return reservation;
     }
 
-    function updateObjectValue(object) {
-        $currentValue.innerText = object.foo;
+    async function retrieveOccupiedDates() {
+        return reservationsTable.find().then(results => {
+            results = results.map(res => [new Date(res.start_date), new Date(res.end_date)]);
+            return results;
+        });
     }
 
-    function subscribeOnObjectChanges(object) {
-        reservationsTable.rt().addUpdateListener('objectId = \'' + object.objectId + '\'', updateObjectValue);
-    }
+    let startDate, endDate = null;
+    let picker = null;
 
-    function onEnter(callback) {
-        return function onKeyPress(e) {
-            if (e.keyCode === 13) {//Enter key
-                callback();
-            }
-        };
-    }
+    initializePicker(await retrieveOccupiedDates());
 
-    function onObjectCreate(object) {
-        $modifierPanel.classList.remove('d-none');
 
-        $updateBtn.addEventListener('click', saveObject);
-        $input.addEventListener('keypress', onEnter(saveObject));
-
-        updateObjectValue(object);
-        subscribeOnObjectChanges(object);
-
-        function saveObject() {
-            object.foo = $input.value;
-
-            $input.value = '';
-
-            reservationsTable.save(object);
+    function initializePicker(disabledDays) {
+        if (picker != null) {
+            picker.destroy();
         }
+        picker = new Litepicker({
+            element: document.getElementById('litepicker'),
+            plugins: ['mobilefriendly'],
+            lang: 'de-DE',
+            inlineMode: true,
+            lockDaysInclusivity: '()',
+            lockDays: disabledDays,
+            minDate: new Date(),
+            highlightedDays: disabledDays,
+            numberOfMonths: 2,
+            showWeekNumbers: true,
+            showTooltip: true,
+            singleMode: false,
+            tooltipText: {'one': 'Tag', 'other': 'Tage'},
+            disallowLockDaysInRange: true,
+            splitView: false,
+            numberOfColumns: 2,
+            maxDays: 50,
+            format: 'DD.MM.YYYY',
+            position: 'top',
+            setup: (p) => {
+                p.on('error:range', () => {
+                    p.clearSelection();
+                    startDate = endDate = null;
+                    alert('Der gewählte Zeitraum kann nicht gewählt werden, da mind. ein Tag bereits belegt ist.');
+                });
+                p.on('selected', (date1, date2) => {
+                    startDate = date1.dateInstance;
+                    endDate = date2.dateInstance;
+                });
+            }
+        });
     }
 
-    createObject();
-    //.then(onObjectCreate);
+    document.querySelector('#booking-form').addEventListener('submit', function (evt) {
+        evt.preventDefault();
+        const formData = new FormData(document.querySelector('#booking-form'));
+        const formObj = {};
+        for (let pair of formData.entries()) {
+            formObj[pair[0]] = pair[1];
+        }
+
+        $('#booking-form :input').prop('disabled', true);
+
+        const address = '' + formObj['street'] + ', ' + formObj['zip'] + ' ' + formObj['city'];
+
+        createObject(startDate, endDate, formObj['email'], formObj['name'], formObj['telephone'], address).then(res => {
+            console.log(res);
+            alert('Die Anfrage wurde erfolgreich abgesendet! Eine Kopie wurde per Mail zugesandt' +
+                ' und wir melden uns bei dir um letzte Details zu klären.');
+            $('#form-success').show();
+        }).catch(async () => {
+            $('#form-error').show();
+            alert('Die Anfrage hat leider nicht geklappt. Für das gewählte Datum existiert bereits eine Anfrage.');
+            initializePicker(await retrieveOccupiedDates());
+            $('#booking-form :input').prop('disabled', false);
+        });
+
+
+    });
+
 })();
 
-*/

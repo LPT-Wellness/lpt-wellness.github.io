@@ -1832,3 +1832,23 @@ $baseurl: '{{ site.baseurl }}/images';
 			}
 		}
 	}
+    :root {
+      --litepicker-highlighted-day-color-bg: #f15656 !important;
+    }
+	#litepicker {
+		width: 300px;
+		text-align: center;
+		margin: 0 auto 20px auto;
+	}
+	.litepicker, .litepicker strong{
+		button {
+			box-shadow: none!important;
+		}
+	}
+	.litepicker-wrapper {
+		padding-bottom: 20px;
+	}
+
+	#form-success, #form-error {
+		display: none;
+	}
