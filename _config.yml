@@ -51,6 +51,9 @@ social:
   #forumbee:
   #tripadvisor:
   #amazon:
+  whatsapp: https://wa.me/491602017067
+  phone: tel:+491602017067
+
 
 # Build settings
 markdown: kramdown
