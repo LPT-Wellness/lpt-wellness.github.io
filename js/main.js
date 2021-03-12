@@ -159,7 +159,6 @@
     let startDate, endDate = null;
     let picker = null;
 
-    initializePicker(await retrieveOccupiedDates());
 
 
     function initializePicker(disabledDays) {
@@ -200,32 +199,33 @@
         });
     }
 
-    document.querySelector('#booking-form').addEventListener('submit', function (evt) {
-        evt.preventDefault();
-        const formData = new FormData(document.querySelector('#booking-form'));
-        const formObj = {};
-        for (let pair of formData.entries()) {
-            formObj[pair[0]] = pair[1];
-        }
+    if (document.getElementById('litepicker') != null) {
+        initializePicker(await retrieveOccupiedDates());
 
-        $('#booking-form :input').prop('disabled', true);
+        document.querySelector('#booking-form').addEventListener('submit', function (evt) {
+            evt.preventDefault();
+            const formData = new FormData(document.querySelector('#booking-form'));
+            const formObj = {};
+            for (let pair of formData.entries()) {
+                formObj[pair[0]] = pair[1];
+            }
 
-        const address = '' + formObj['street'] + ', ' + formObj['zip'] + ' ' + formObj['city'];
+            $('#booking-form :input').prop('disabled', true);
 
-        createObject(startDate, endDate, formObj['email'], formObj['name'], formObj['telephone'], address).then(res => {
-            console.log(res);
-            alert('Die Anfrage wurde erfolgreich abgesendet! Eine Kopie wurde per Mail zugesandt' +
-                ' und wir melden uns bei dir um letzte Details zu klären.');
-            $('#form-success').show();
-        }).catch(async () => {
-            $('#form-error').show();
-            alert('Die Anfrage hat leider nicht geklappt. Für das gewählte Datum existiert bereits eine Anfrage.');
-            initializePicker(await retrieveOccupiedDates());
-            $('#booking-form :input').prop('disabled', false);
+            const address = '' + formObj['street'] + ', ' + formObj['zip'] + ' ' + formObj['city'];
+
+            createObject(startDate, endDate, formObj['email'], formObj['name'], formObj['telephone'], address).then(res => {
+                console.log(res);
+                alert('Die Anfrage wurde erfolgreich abgesendet! Eine Kopie wurde per Mail zugesandt' +
+                    ' und wir melden uns bei dir um letzte Details zu klären.');
+                $('#form-success').show();
+            }).catch(async () => {
+                $('#form-error').show();
+                alert('Die Anfrage hat leider nicht geklappt. Für das gewählte Datum existiert bereits eine Anfrage.');
+                initializePicker(await retrieveOccupiedDates());
+                $('#booking-form :input').prop('disabled', false);
+            });
         });
-
-
-    });
-
+    }
 })();
 
