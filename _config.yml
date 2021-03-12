@@ -15,9 +15,11 @@ social:
   #twitter: https://twitter.com/<username>
   #github: https://github.com/<username>
   #linkedin-square: https://linkedin.com/in/<username>
-  #facebook-official: https://facebook.com/<username>
   #google-plus-square: https://plus.google.com/u/0/+<username>
   email: mailto:info@wellness-pb.de
+  whatsapp: https://wa.me/491602017067
+  phone: tel:+491602017067
+  facebook-official: https://www.facebook.com/mobilesaunapaderborn
   #flickr:
   instagram: https://www.instagram.com/mobile_sauna_paderborn
   #youtube-square:
@@ -51,8 +53,6 @@ social:
   #forumbee:
   #tripadvisor:
   #amazon:
-  whatsapp: https://wa.me/491602017067
-  phone: tel:+491602017067
 
 
 # Build settings

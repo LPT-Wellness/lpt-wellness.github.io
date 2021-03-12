@@ -136,8 +136,22 @@
     }
 
     async function retrieveOccupiedDates() {
-        return reservationsTable.find().then(results => {
-            results = results.map(res => [new Date(res.start_date), new Date(res.end_date)]);
+        var queryBuilder = Backendless.DataQueryBuilder.create();
+        queryBuilder.setPageSize(100);
+        return reservationsTable.find(queryBuilder).then(results => {
+            results = results.map(res => {
+                const startDate = new Date(res.start_date);
+                let endDate = new Date(res.end_date);
+
+                const diffTime = Math.abs(endDate - startDate);
+                const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+                if (diffDays >= 2) {
+                    const dateOffset = (24 * 60 * 60 * 1000) * 1; //1 day
+                    endDate = new Date(endDate.getTime() - dateOffset);
+                }
+
+                return [startDate, endDate];
+            });
             return results;
         });
     }
