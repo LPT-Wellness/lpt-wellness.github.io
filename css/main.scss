@@ -1853,3 +1853,9 @@ $baseurl: '{{ site.baseurl }}/images';
 	#form-success, #form-error {
 		display: none;
 	}
+
+	.bigger {
+		.button.fit {
+			width: 240px;
+		}
+	}
