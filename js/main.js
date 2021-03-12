@@ -144,8 +144,9 @@
                 let endDate = new Date(res.end_date);
 
                 const diffTime = Math.abs(endDate - startDate);
+                console.log(diffTime / (1000 * 60 * 60 * 24));
                 const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-                if (diffDays >= 2) {
+                if (diffDays >= 1) {
                     const dateOffset = (24 * 60 * 60 * 1000) * 1; //1 day
                     endDate = new Date(endDate.getTime() - dateOffset);
                 }
@@ -170,7 +171,7 @@
             plugins: ['mobilefriendly'],
             lang: 'de-DE',
             inlineMode: true,
-            lockDaysInclusivity: '[]',
+            lockDaysInclusivity: '()',
             lockDays: disabledDays,
             minDate: new Date(),
             highlightedDays: disabledDays,
