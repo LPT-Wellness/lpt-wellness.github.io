@@ -1835,6 +1835,7 @@ $baseurl: '{{ site.baseurl }}/images';
     :root {
       --litepicker-highlighted-day-color-bg: #f88a8a !important;
       --litepicker-is-in-range-color: #8a9092 !important;
+      --litepicker-is-today-color: #f69e1b !important;
     }
 	#litepicker {
 		width: 300px;
