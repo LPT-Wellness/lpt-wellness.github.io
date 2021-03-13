@@ -2,9 +2,10 @@
 #
 
 # Site settings
-title: Wellness in Paderborn
-description: |
-  Sauna im privaten Umfeld dort genießen wo du willst
+head_title: Mobile Sauna mieten in Paderborn - Wellness Paderborn
+title: Mobile Sauna mieten
+description: Jetzt mobile Sauna für Zuhause mieten im Kreis Paderborn
+keywords: "Sauna mieten, Paderborn, Sauna, mobile Sauna, Else, Bad Lippspringe"
 owner: LPT-Wellness GbR # or company name
 address: Thüringer Weg 22, 33098 Paderborn
 first_published: 2021 # if migrating another site, the year of your first publish
