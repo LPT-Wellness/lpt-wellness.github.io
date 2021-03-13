@@ -1,9 +1,17 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>{% if page.title %}{{ page.title | escape }} - {% endif %} {{ site.title | escape }}</title>
+  <title>{% if page.title %}{{ page.title | escape }} - {% endif %} {{ site.head_title | escape }}</title>
   <meta name="description" content="{{ site.description }}">
   <meta name="keywords" content="{{ site.keywords }}">
+
+  <meta property="og:title" content="{{ site.head_title}}">
+  <meta property="og:url" content="{{ site.url }}">
+  <meta property="og:image" content="{{site.url}}/images/pic03.jpg">
+  <meta property="og:type" content="website">
+  <meta property="og:description" content="{{site.description}}">
+  <meta property="og:locale" content="de_DE">
+
   <!--[if lte IE 8]><script src="{{ "/js/ie/html5shiv.js" | prepend: site.baseurl }}"></script><![endif]-->
   <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
   <link rel="stylesheet" href="{{ "/css/main.css" | prepend: site.baseurl }}" />

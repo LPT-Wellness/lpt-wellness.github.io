@@ -173,7 +173,7 @@
             inlineMode: true,
             lockDaysInclusivity: '()',
             lockDays: disabledDays,
-            minDate: new Date(Date.now() - 86400000),
+            minDate: new Date(new Date().toDateString()),
             highlightedDays: disabledDays,
             numberOfMonths: 2,
             showWeekNumbers: true,
