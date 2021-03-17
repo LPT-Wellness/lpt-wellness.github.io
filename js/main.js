@@ -171,12 +171,16 @@
             plugins: ['mobilefriendly'],
             lang: 'de-DE',
             inlineMode: true,
-            lockDaysInclusivity: '()',
+            lockDaysInclusivity: '[)',
             lockDays: disabledDays,
             minDate: new Date(new Date().toDateString()),
             highlightedDays: disabledDays,
             numberOfMonths: 2,
             showWeekNumbers: true,
+            minDays: 2,
+            tooltipNumber: (totalDays) => {
+                return totalDays - 1;
+            },
             showTooltip: true,
             singleMode: false,
             tooltipText: {'one': 'Tag', 'other': 'Tage'},

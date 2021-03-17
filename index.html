@@ -19,14 +19,36 @@ layout: landing
         <header class="major">
             <h2>Buche unsere Sauna ganz einfach über den Kalender!<br/>
                 Markiere deine gewünschten Tage.</h2>
-            <p>Bitte gib neben deinem Wunschzeitraum auch deine persönlichen Daten ein. Diese brauchen wir um deine
+            <p>
+                Bitte gib neben deinem Wunschzeitraum (Tag der Lieferund und Tag der Abholung) auch deine persönlichen
+                Daten ein. Diese brauchen wir um deine
                 Anfrage zu prüfen und zu bestätigen. Anschließend nehmen wir per Whatsapp (oder Telefon) Kontakt mit dir
-                auf um die genauen Details zu klären.</p>
+                auf um die genauen Details zu klären.
+            </p>
+
+            <div style="text-align: left;">
+                <h4>
+                    Schritte zur Buchung
+                </h4>
+                <div>
+                    1) Wähle den Liefertermin der Sauna! Wir liefern dir die Sauna nachmittags (die genaue Uhrzeit
+                    klären wir vorher mit dir ab)
+                </div>
+                <div>
+                    2) Wähle dann den Abholtermin! (Du kannst auch einen rot markierten Tag zur Abholung wählen, da die
+                    Sauna erst nachmittags zum nächsten Kunden geht.)
+                </div>
+                <div>
+                    3) Vervollständige die Buchung durch deine persönlichen Daten!
+                </div>
+            </div>
         </header>
         <div>
             <form method="post" action="#" id="booking-form">
                 <div class="litepicker-wrapper">
-                    <input type="text" id="litepicker" autocomplete="off" required onkeypress="return false;" placeholder="Zeitraum unten wählen"></div>
+                    Lieferung - Abholung
+                    <input type="text" id="litepicker" autocomplete="off" required onkeypress="return false;"
+                           placeholder="Zeitraum unten wählen"></div>
                 <div class="row uniform">
                     <div class="12u$ 12u$(xsmall)">
                         <input autocomplete="name" type="text" name="name" id="name" required placeholder="Name"/>
@@ -54,7 +76,8 @@ layout: landing
 
                     <div class="12u 12u$(small)">
                         <input type="checkbox" id="dsgvo" name="dsgvo" required value="true" style="height: 30px;">
-                        <label for="dsgvo">Ich akzeptiere, dass meine persönlichen Daten zur Bearbeitung der Anfrage von uns und unseren Dienstleistern elektronisch verarbeitet werden. </label>
+                        <label for="dsgvo">Ich akzeptiere, dass meine persönlichen Daten zur Bearbeitung der Anfrage von
+                            uns und unseren Dienstleistern elektronisch verarbeitet werden. </label>
                     </div>
                     <!--  <div class="6u 12u$(small)">
                           <input type="checkbox" id="human" name="human" checked>
@@ -80,17 +103,18 @@ layout: landing
             </form>
 
         </div>
-        <ul class="features" >
+        <ul class="features">
             <li style="width: 100%;" id="form-success" class="icon fa-calendar-check-o">
                 <p>
-                    Die Anfrage wurde erfolgreich abgesendet! Eine Kopie wurde per Mail zugesandt und wir melden uns bei dir um letzte Details zu klären.
+                    Die Anfrage wurde erfolgreich abgesendet! Eine Kopie wurde per Mail zugesandt und wir melden uns bei
+                    dir um letzte Details zu klären.
                 </p>
             </li>
             <li style="width: 100%;" id="form-error" class="icon fa-calendar-times-o">
-            <p>
-                Die Anfrage hat leider nicht geklappt. Für das gewählte Datum existiert bereits eine Anfrage.
-            </p>
-        </li>
+                <p>
+                    Die Anfrage hat leider nicht geklappt. Für das gewählte Datum existiert bereits eine Anfrage.
+                </p>
+            </li>
         </ul>
     </div>
 </section>
@@ -101,15 +125,25 @@ layout: landing
         <div class="image"><img src="images/pic01.jpg" alt=""/></div>
         <div class="content">
             <h4>Das pure Wohlfühlerlebnis</h4>
-            <p>Durch die fehlenden Wellnessmöglichkeiten während der Corona-Pandemie kam uns die Idee zum eigenen Sauna-Bau. Als absolute Sauna-Liebhaber wissen wir, wie gut uns Saunagänge für Herz, Haut und Abwehrkräfte tun. Ein besseres Immunsystem und Hautbild, hilfreich bei Muskelverspannungen, positive Auswirkungen für Atmung sowie Kreislauf und natürlich absolute Entspannung – die Liste der Vorteile ist lang. Letzteres wird beim Saunaerlebnis im eigenen Garten natürlich noch einmal deutlich erhöht. Genieße ungestörte Ruhe und bestimme selbst und ungebunden, wann und wie oft du in die Sauna gehen und Aufgüsse erleben möchtest!</p>
+            <p>Durch die fehlenden Wellnessmöglichkeiten während der Corona-Pandemie kam uns die Idee zum eigenen
+                Sauna-Bau. Als absolute Sauna-Liebhaber wissen wir, wie gut uns Saunagänge für Herz, Haut und
+                Abwehrkräfte tun. Ein besseres Immunsystem und Hautbild, hilfreich bei Muskelverspannungen, positive
+                Auswirkungen für Atmung sowie Kreislauf und natürlich absolute Entspannung – die Liste der Vorteile ist
+                lang. Letzteres wird beim Saunaerlebnis im eigenen Garten natürlich noch einmal deutlich erhöht. Genieße
+                ungestörte Ruhe und bestimme selbst und ungebunden, wann und wie oft du in die Sauna gehen und Aufgüsse
+                erleben möchtest!</p>
         </div>
     </section>
     <section class="spotlight">
         <div class="image"><img src="images/pic02.jpg" alt=""/></div>
         <div class="content">
             <h4>Die Sauna</h4>
-            <p>Unsere Fasssauna mit einer Innenlänge von 1,80m bietet Platz für bis zu vier Personen. Zugang verschafft man sich über eine überdachte Terrasse, auf der Bademäntel- und schlappen ihren Platz finden können. Neben Sitzbänken im Freien ist zudem auch an Brillenablagen gedacht. Da die Beleuchtung über Akkus betrieben wird, ist der Aufstellungsort sehr flexibel.
-                Die aus nordischem Fichtenholz erbaute Sauna hat zudem zwei Fenster mit Sichtschutz, von denen eins auch die Möglichkeit zum Stoßlüften bietet.
+            <p>Unsere Fasssauna mit einer Innenlänge von 1,80m bietet Platz für bis zu vier Personen. Zugang verschafft
+                man sich über eine überdachte Terrasse, auf der Bademäntel- und schlappen ihren Platz finden können.
+                Neben Sitzbänken im Freien ist zudem auch an Brillenablagen gedacht. Da die Beleuchtung über Akkus
+                betrieben wird, ist der Aufstellungsort sehr flexibel.
+                Die aus nordischem Fichtenholz erbaute Sauna hat zudem zwei Fenster mit Sichtschutz, von denen eins auch
+                die Möglichkeit zum Stoßlüften bietet.
             </p>
         </div>
     </section>
@@ -117,8 +151,13 @@ layout: landing
         <div class="image"><img src="images/pic03.jpg" alt=""/></div>
         <div class="content">
             <h4>Holzofen und hochwertiges getrocknetes holz - die perfekte Kombination</h4>
-            <p>Die Beheizung erfolgt über einen Holzofen. Hierfür liefern wir genügend Holz, so dass dem Saunagenuss keine Grenzen gesetzt sind. Das Holz zur Befeuerung beziehen wir dabei von einem lokalen Anbieter und können eine hohe Qualität garantieren.
-                Die runde Form der Fasssauna ermöglicht eine schnelle Beheizung sowie eine einzigartige und optimale Zirkulation von Luft und Wärme. Bereits nach 30 bis 60 Minuten können hier Temperaturen von 60 bis 90 °C erreicht werden. Um das Saunaerlebnis noch weiter abzurunden, liefern wir euch außerdem ausgewählte Düfte – perfekt zum Mischen für entspannte Aufgüsse – mit dazu.
+            <p>Die Beheizung erfolgt über einen Holzofen. Hierfür liefern wir genügend Holz, so dass dem Saunagenuss
+                keine Grenzen gesetzt sind. Das Holz zur Befeuerung beziehen wir dabei von einem lokalen Anbieter und
+                können eine hohe Qualität garantieren.
+                Die runde Form der Fasssauna ermöglicht eine schnelle Beheizung sowie eine einzigartige und optimale
+                Zirkulation von Luft und Wärme. Bereits nach 30 bis 60 Minuten können hier Temperaturen von 60 bis 90 °C
+                erreicht werden. Um das Saunaerlebnis noch weiter abzurunden, liefern wir euch außerdem ausgewählte
+                Düfte – perfekt zum Mischen für entspannte Aufgüsse – mit dazu.
             </p>
         </div>
     </section>
@@ -172,7 +211,9 @@ layout: landing
     <div class="inner">
         <header>
             <!--<h2></h2>-->
-            <p>Der Sauna-Anhänger ist 4,70m x 2,55m groß und wiegt ca. 2t. Wir liefern die Sauna an deinen Wunschort – allerdings musst du gewährleisten, dass ein Stellplatz in derartiger Größe zur Verfügung steht und somit der reibungslosen Anlieferung nichts im Wege steht.
+            <p>Der Sauna-Anhänger ist 4,70m x 2,55m groß und wiegt ca. 2t. Wir liefern die Sauna an deinen Wunschort –
+                allerdings musst du gewährleisten, dass ein Stellplatz in derartiger Größe zur Verfügung steht und somit
+                der reibungslosen Anlieferung nichts im Wege steht.
                 Selbstverständlich wird die Sauna nach jeder Vermietung gründlich gereinigt und desinfiziert.
             </p>
         </header>

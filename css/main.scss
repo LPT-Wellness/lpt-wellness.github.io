@@ -1860,3 +1860,9 @@ $baseurl: '{{ site.baseurl }}/images';
 			width: 240px;
 		}
 	}
+	.highlight-red {
+		padding: 0 3px;
+		border-radius: 3px;
+		color: var(--litepicker-highlighted-day-color);
+		background-color: var(--litepicker-highlighted-day-color-bg);
+	}
