@@ -1836,6 +1836,7 @@ $baseurl: '{{ site.baseurl }}/images';
       --litepicker-highlighted-day-color-bg: #f88a8a !important;
       --litepicker-is-in-range-color: #8a9092 !important;
       --litepicker-is-today-color: #f69e1b !important;
+      --litepicker-highlighted-day-color: white!important;
     }
 	#litepicker {
 		width: 300px;
@@ -1866,3 +1867,39 @@ $baseurl: '{{ site.baseurl }}/images';
 		color: var(--litepicker-highlighted-day-color);
 		background-color: var(--litepicker-highlighted-day-color-bg);
 	}
+
+    .day-item.is-highlighted {
+      border-radius: 0!important;
+    }
+    .day-item.is-highlighted.is-end.is-start {
+      background-color: var(--litepicker-highlighted-day-color-bg)!important;
+    }
+    .day-item.is-highlighted.is-end {
+      background-color: transparent!important;
+      background-image: linear-gradient(135deg, rgb(248, 138, 138) 50%, transparent 50%);
+    }
+
+    .day-item.is-highlighted.is-start {
+      background-color: transparent!important;
+      background-image: linear-gradient(-45deg, rgb(248, 138, 138) 50%, transparent 50%);
+    }
+
+.day-item.is-highlighted.is-end-date,
+.day-item.is-highlighted.is-end-date.is-start,
+.day-item.is-highlighted.is-end-date.is-end,
+.day-item.is-highlighted.is-end-date.is-start.is-end  {
+	color: var(--litepicker-is-end-color)!important;
+	background-color: var(--litepicker-is-end-color-bg) !important;
+	border-radius: 0 5px 5px 0!important;
+	background-image: none!important;
+}
+.day-item.is-highlighted.is-start-date,
+.day-item.is-highlighted.is-start-date.is-start,
+.day-item.is-highlighted.is-start-date.is-end,
+.day-item.is-highlighted.is-start-date.is-start.is-end {
+	color: var(--litepicker-is-start-color)!important;
+	background-color: var(--litepicker-is-start-color-bg)!important;
+	border-radius: 5px 0 0 5px!important;
+	background-image: none!important;
+}
+

@@ -144,12 +144,12 @@
                 let endDate = new Date(res.end_date);
 
                 const diffTime = Math.abs(endDate - startDate);
-                console.log(diffTime / (1000 * 60 * 60 * 24));
                 const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-                if (diffDays >= 1) {
+                if (false  && diffDays >= 1) {
                     const dateOffset = (24 * 60 * 60 * 1000) * 1; //1 day
                     endDate = new Date(endDate.getTime() - dateOffset);
                 }
+
 
                 return [startDate, endDate];
             });
@@ -161,7 +161,6 @@
     let picker = null;
 
 
-
     function initializePicker(disabledDays) {
         if (picker != null) {
             picker.destroy();
@@ -171,7 +170,7 @@
             plugins: ['mobilefriendly'],
             lang: 'de-DE',
             inlineMode: true,
-            lockDaysInclusivity: '[)',
+            lockDaysInclusivity: '()',
             lockDays: disabledDays,
             minDate: new Date(new Date().toDateString()),
             highlightedDays: disabledDays,
@@ -220,7 +219,6 @@
             const address = '' + formObj['street'] + ', ' + formObj['zip'] + ' ' + formObj['city'];
 
             createObject(startDate, endDate, formObj['email'], formObj['name'], formObj['telephone'], address).then(res => {
-                console.log(res);
                 alert('Die Anfrage wurde erfolgreich abgesendet! Eine Kopie wurde per Mail zugesandt' +
                     ' und wir melden uns bei dir um letzte Details zu klären.');
                 $('#form-success').show();
