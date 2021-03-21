@@ -136,7 +136,10 @@
     }
 
     async function retrieveOccupiedDates() {
-        var queryBuilder = Backendless.DataQueryBuilder.create();
+        let date = new Date();
+        date.setDate(date.getDate() - 1);
+        const whereClause = "end_date > " + date.getTime();
+        const queryBuilder = Backendless.DataQueryBuilder.create().setWhereClause(whereClause);
         queryBuilder.setPageSize(100);
         return reservationsTable.find(queryBuilder).then(results => {
             results = results.map(res => {
