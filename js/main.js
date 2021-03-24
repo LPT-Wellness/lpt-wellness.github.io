@@ -109,39 +109,29 @@
 
 
 (async function () {
-    const APP_ID = 'AF67BAEC-AC5F-A102-FF4A-5DADCF67B600';
-    const API_KEY = 'DFE382CE-364F-4109-BBBC-F1635E1E5754';
 
-    Backendless.serverURL = 'https://eu-api.backendless.com';
-    Backendless.initApp(APP_ID, API_KEY);
+    // const apiUrl = 'http://localhost:3000/api/reservations';
+    const apiUrl = 'https://wellness-pb.herokuapp.com/api/reservations';
 
-    const reservationsTable = Backendless.Data.of('reservations');
-    const customersTable = Backendless.Data.of('customers');
-
-    async function createObject(startDate, endDate, email, name, phone, address) {
-        const reservation = await reservationsTable.save({
+    async function createObject(startDate, endDate, email, name, phone, address, dsgvo, delivery) {
+        const reservation = {
             start_date: startDate,
             end_date: endDate,
-        });
+            customer_email: email,
+            customer_name:name,
+            customer_phone: phone,
+            customer_address: address,
+            dsgvo_accepted: dsgvo === "true",
+            delivery: delivery
+        };
 
-        const customer = await customersTable.save({
-            email,
-            name,
-            phone,
-            address
-        });
-
-        reservationsTable.setRelation(reservation, 'customer', [customer]);
-        return reservation;
+        return jQuery.post( apiUrl, {reservation}, null, "json");
     }
 
     async function retrieveOccupiedDates() {
-        let date = new Date();
-        date.setDate(date.getDate() - 1);
-        const whereClause = "end_date > " + date.getTime();
-        const queryBuilder = Backendless.DataQueryBuilder.create().setWhereClause(whereClause);
-        queryBuilder.setPageSize(100);
-        return reservationsTable.find(queryBuilder).then(results => {
+        const reservationsRequest = jQuery.getJSON(apiUrl);
+
+        return reservationsRequest.then(results => {
             results = results.map(res => {
                 const startDate = new Date(res.start_date);
                 let endDate = new Date(res.end_date);
@@ -220,8 +210,7 @@
             $('#booking-form :input').prop('disabled', true);
 
             const address = '' + formObj['street'] + ', ' + formObj['zip'] + ' ' + formObj['city'];
-
-            createObject(startDate, endDate, formObj['email'], formObj['name'], formObj['telephone'], address).then(res => {
+            createObject(startDate, endDate, formObj['email'], formObj['name'], formObj['telephone'], address, formObj['dsgvo'], formObj['no-delivery'] !== "true").then(() => {
                 alert('Die Anfrage wurde erfolgreich abgesendet! Eine Kopie wurde per Mail zugesandt' +
                     ' und wir melden uns bei dir um letzte Details zu klären.');
                 $('#form-success').show();
